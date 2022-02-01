@@ -3,6 +3,7 @@ package com.sunglowsys.service;
 import com.sunglowsys.domain.Employee;
 import com.sunglowsys.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,6 +29,18 @@ public class EmployeeServiceImpl implements EmployeeService{
     public List<Employee> findAll() {
         List<Employee> employee = employeeRepository.findAll();
         return employee;
+    }
+
+    @Override
+    public List<Employee> findAllOrderByFirstName() {
+        List<Employee> employees = employeeRepository.findAll(Sort.by("firstName"));
+        return employees;
+    }
+
+    @Override
+    public List<Employee> findAllOrderBySalary() {
+        List<Employee> employees = employeeRepository.findAll(Sort.by("salary"));
+        return employees;
     }
 
     @Override

@@ -22,6 +22,18 @@ public class EmployeeController {
         return "index";
     }
 
+    @GetMapping("/orderByFirstName")
+    public String findAllOrderByFirstName(Model model){
+        model.addAttribute("employee",employeeService.findAllOrderByFirstName());
+        return "index";
+    }
+
+    @GetMapping("/orderBySalary")
+    public String findAllOrderBySalary(Model model){
+        model.addAttribute("employee",employeeService.findAllOrderBySalary());
+        return "index";
+    }
+
     @GetMapping("/addEmp")
     public String addEmployeeForm(Model model){
         Employee employee = new Employee();
