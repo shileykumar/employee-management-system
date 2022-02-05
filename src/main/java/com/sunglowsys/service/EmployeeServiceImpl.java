@@ -3,6 +3,9 @@ package com.sunglowsys.service;
 import com.sunglowsys.domain.Employee;
 import com.sunglowsys.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +35,12 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
     @Override
+    public List<Employee> findByKeyword(String keyword) {
+        List<Employee> employees = employeeRepository.getByKeyword(keyword);
+        return employees;
+    }
+
+    @Override
     public List<Employee> findAllOrderByFirstName() {
         List<Employee> employees = employeeRepository.findAll(Sort.by("firstName"));
         return employees;
@@ -42,6 +51,13 @@ public class EmployeeServiceImpl implements EmployeeService{
         List<Employee> employees = employeeRepository.findAll(Sort.by("salary"));
         return employees;
     }
+
+   /* @Override
+    public Page<Employee> findByPage(int pageNo, int pageSize) {
+
+        Pageable pageable = PageRequest.of(pageNo-1,pageSize);
+        return employeeRepository.findAll(pageable);
+    }*/
 
     @Override
     public Employee findById(Long id) {
