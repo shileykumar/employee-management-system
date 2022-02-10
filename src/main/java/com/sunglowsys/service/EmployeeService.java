@@ -20,7 +20,7 @@ public interface EmployeeService {
 
     List<Employee> findAllOrderBySalary();
 
-    /*Page<Employee> findByPage(int pageNo, int pageSize);*/
+    Page<Employee> findByPage(int pageNo, int pageSize);
 
     Employee findById(Long id);
 

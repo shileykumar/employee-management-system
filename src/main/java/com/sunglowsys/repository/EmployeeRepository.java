@@ -11,6 +11,7 @@ import java.util.List;
 
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
+
     @Query("from Employee emp where emp.firstName like %:keyword% " +
             "or emp.lastName like %:keyword% or emp.gender like %:keyword% ")
     List<Employee> getByKeyword(@Param("keyword") String keyword);

@@ -52,12 +52,12 @@ public class EmployeeServiceImpl implements EmployeeService{
         return employees;
     }
 
-   /* @Override
+    @Override
     public Page<Employee> findByPage(int pageNo, int pageSize) {
 
         Pageable pageable = PageRequest.of(pageNo-1,pageSize);
         return employeeRepository.findAll(pageable);
-    }*/
+    }
 
     @Override
     public Employee findById(Long id) {

@@ -21,10 +21,10 @@ public class EmployeeController {
 
     @GetMapping("/")
     public String home(Model model){
-        model.addAttribute("employee",employeeService.findAll());
-        return "index";
+        /*model.addAttribute("employee",employeeService.findAll());
+        return "index";*/
 
-        /*return findByPages(1,model);*/
+        return findByPages(1,model);
     }
 
     @GetMapping("/search")
@@ -36,9 +36,9 @@ public class EmployeeController {
         return "index";
     }
 
-    /*@GetMapping("/page/{pageNo}")
+    @GetMapping("/page/{pageNo}")
     public String findByPages(@PathVariable("pageNo") int pageNo, Model model){
-        int pageSize = 1;
+        int pageSize = 3;
 
         Page<Employee> employeePage = employeeService.findByPage(pageNo,pageSize);
         List<Employee> employees = employeePage.getContent();
@@ -46,9 +46,9 @@ public class EmployeeController {
         model.addAttribute("pageNo",pageNo);
         model.addAttribute("totalPage",employeePage.getTotalPages());
         model.addAttribute("totalElement",employeePage.getTotalElements());
-        model.addAttribute("employees",employees);
+        model.addAttribute("employee",employees);
         return "index";
-    }*/
+    }
 
     @GetMapping("/orderByFirstName")
     public String findAllOrderByFirstName(Model model){
